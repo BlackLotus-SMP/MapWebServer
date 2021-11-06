@@ -12,3 +12,6 @@ docker build -t maps .
 chmod +x stop.sh
 ./stop.sh
 docker run -d --name mapscnt -p 80:80 -p 443:443 -v $PWD/maps:/otakucraft/maps maps
+docker exec mapscnt certbot --nginx -d otakucraft.kahzerx.com --agree-tos --register-unsafely-without-email --no-redirect
+docker exec mapscnt service cron start
+docker exec mapscnt crontab crn
